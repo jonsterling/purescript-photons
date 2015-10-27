@@ -17,9 +17,6 @@ import Data.Profunctor.Strong
 class (Index m a b) <= At m a b where
   at :: a -> LensP m (Maybe b)
 
-hole :: forall a. a
-hole = Unsafe.Coerce.unsafeCoerce ""
-
 lens :: forall s t a b. (s -> a) -> (s -> b -> t) -> Lens s t a b
 lens f g = dimap (f &&& id) (\(Tuple a b) -> g b a) <<< first
 
