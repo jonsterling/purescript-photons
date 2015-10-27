@@ -37,9 +37,6 @@ type AnIsoP s a = AnIso s s a a
 type Lens s t a b = forall p. (Strong p) => Optic p s t a b
 type LensP s a = Lens s s a a
 
-type LensF s t a b = Optic (->) s t a b
-type LensFP s a = LensF s s a a
-
 type ALens s t a b = Optic (Shop a b) s t a b
 type ALensP s a = ALens s s a a
 

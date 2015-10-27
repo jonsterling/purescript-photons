@@ -5,10 +5,10 @@ import Prelude
 -- import Data.Set (Set(), delete, insert, member)
 
 import Photons.Index.Class (IndexKey)
-import Photons.Types (LensFP())
+import Photons.Types (LensP())
 
 class (IndexKey m a) <= Contains m a where
-  contains :: a -> LensFP m Boolean
+  contains :: a -> LensP m Boolean
 
 -- instance containsSet :: (Ord k) => Contains (Set k) k where
 --   contains k f s =
