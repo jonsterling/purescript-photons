@@ -10,15 +10,10 @@ import Data.StrMap as SM
 import Data.Tuple
 
 import Photons.Index (Index)
-import Photons.Types (LensP(), Lens())
-import Data.Profunctor
-import Data.Profunctor.Strong
+import Photons.Lens (LensP(), lens)
 
 class (Index m a b) <= At m a b where
   at :: a -> LensP m (Maybe b)
-
-lens :: forall s t a b. (s -> a) -> (s -> b -> t) -> Lens s t a b
-lens f g = dimap (f &&& id) (\(Tuple a b) -> g b a) <<< first
 
 instance atIdentity :: At (Identity a) Unit a where
   at _ = lens (Just <<< runIdentity) (flip maybe Identity)
